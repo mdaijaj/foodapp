@@ -2,7 +2,7 @@ import './App.css';
 import react, {useEffect, useState} from 'react';
 import {Routes, Route} from 'react-router-dom'
 import Navbar from './components/navbar'
-import Home from './components/home'
+import HomeRestaurant from './components/home'
 // import ServiceAdd from './components/hotel/addservice'
 // import AddHotel from './components/hotel/addhotel'
 import HotelDetails from './components/hotel/hoteldetails'
@@ -15,12 +15,9 @@ const Routing=()=>{
   return(
     <>
       <Routes>
-        <Route path="/" element={<Home/>} />  
-        {/* <Route path="/addhotel" element={<AddHotel/>} />
-        <Route path="/addservice" element={<ServiceAdd/>} /> */}
+        <Route path="/" element={<HomeRestaurant/>} />  
         <Route path="/restdetails/:id" element={<HotelDetails/>} />
         <Route path="/cartlist" element={<Cart/>} />
-
         <Route path="/signup" element={<Signup/>} />
         <Route path="/login" element={<Login/>} />
         

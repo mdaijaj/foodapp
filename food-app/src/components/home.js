@@ -1,19 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-// import DatePicker from "react-datepicker";
 import { NavLink } from "react-router-dom";
 import '../App.css'
-// import {images} from '../images.jpeg'
-import Filter from "./filter"
 
 
 const HomeRestaurant = () => {
-    // const [startDate, setStartDate] = useState(new Date());
-    // const [endDate, setEndDate] = useState(new Date());
     const [restList, setRestList] = useState([])
     const [findRest, setFindRest] = useState([])
-    // const [destination, setDestination] = useState(null)
-    // const [restaurant, setRestaurant] = useState(null)
+    const [destination, setDestination] = useState(null)
     const [loading, setLoading]= useState(null)
 
     const getAllRest = async () => {
@@ -25,18 +19,13 @@ const HomeRestaurant = () => {
         // return response
     }
 
-    // const searchRestaurant = async () => {
-    //     setFindRest(restList.data.data.filter(e => (e.city == destination)  || e.restaurant == restaurant))
-    // }
-
-    // const searchRestaurant = async () => {
-    //     setFindRest(restList.data.data.filter(e => e.city == restaurant))
-    // }
-
-
-    // const hotelDetails=()=>{
-    //     console.log("hotelDetails")
-    // }
+    const searchRestaurant = async () => {
+        console.log("findRest", findRest)
+        console.log("destination", destination)
+        const findresult= await findRest.filter(((item=> item.city==destination || item.restName==destination)))
+        setFindRest(findresult)
+        return findresult;
+    }
 
     useEffect(() => {
         getAllRest()
@@ -44,29 +33,18 @@ const HomeRestaurant = () => {
 
     return (
         <>
-            {/* <div className="main" style={{ width: "90%", height: "200px", margin: "auto", borderRadius: "25px" }}>
+            <div className="main" style={{ width: "90%", height: "200px", margin: "auto", borderRadius: "25px" }}>
                 <form>
                     <div className="container">
                         <div className="row">
                             <div className="col-3">
                                 <label /> Location:
-                                <input type="text" className="form-control" onChange={(e) => searchRestaurant(e.target.value)} placeholder="Enter City...." />
+                                <input type="text" className="form-control" onChange={(e) => setDestination(e.target.value)} placeholder="Enter City...." />
                             </div>
 
                             <div className="col-3">
                                 <label /> Restaurant:
-                                <input type="text" className="form-control" onChange={(e) => setRestaurant(e.target.value)} placeholder="Search Restaurant...." />
-                            </div>
-
-                            <div className="col-2">
-                                <label htmlFor="exampleFormControlSelect1">Hotel Type:</label>
-                                <select className="form-control" id="exampleFormControlSelect1">
-                                    <option>Food Type</option>
-                                    <option>Break Fast</option>
-                                    <option>Lunch </option>
-                                    <option>Dinner</option>
-                                    <option>Drink</option>
-                                </select>
+                                <input type="text" className="form-control" onChange={(e) => setDestination(e.target.value)} placeholder="Search Restaurant...." />
                             </div>
 
                             <div className="col-2 pt-4">
@@ -75,11 +53,10 @@ const HomeRestaurant = () => {
                         </div>
                     </div>
                 </form>
-            </div> */}
+            </div>
 
 
             
-            <Filter/>
             <center><h1>Recenctly Restaurant Search....</h1></center><br />
             <div className="container">
             <ul className="row list-ul">
@@ -87,6 +64,8 @@ const HomeRestaurant = () => {
 
                 {console.log("findRest", findRest)}
                 {
+
+
                     findRest?.map((rest => {
                         {console.log("rest", rest)}
                         return (

@@ -4,8 +4,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import '../App.css'
 
-
-const Filter=()=>{
+const Filter = (props) => {
     const [destination, setDestination] = useState(null)
     const [restaurant, setRestaurant] = useState(null)
     const [restList, setRestList] = useState([])
@@ -13,13 +12,13 @@ const Filter=()=>{
 
 
     const searchRestaurant = async () => {
-        setFindRest(restList.data.data.filter(e => (e.city == destination)  || e.restaurant == restaurant))
+        setFindRest(restList.data.data.filter(e => (e.city == destination) || e.restaurant == restaurant))
     }
 
 
     return (
         <>
-        <div className="main" style={{ width: "90%", height: "200px", margin: "auto", borderRadius: "25px" }}>
+            <div className="main" style={{ width: "90%", height: "200px", margin: "auto", borderRadius: "25px" }}>
                 <form>
                     <div className="container">
                         <div className="row">

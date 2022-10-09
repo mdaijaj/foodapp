@@ -19,7 +19,7 @@ const Navbar = (props) => {
                     <NavLink className="navbar-brand" to="#">
                         <img src="https://image.similarpng.com/very-thumbnail/2020/06/Restaurant-logo-with-chef-drawing-template-on-transparent-background-PNG.png" style={{ borderRadius: "50%" }} width="100" height="100" className="d-inline-block align-top" alt="image path not found" />
                     </NavLink>
-                    Quality Hotel
+                    Restaurant Order Food
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -29,13 +29,10 @@ const Navbar = (props) => {
                                 <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" to="/addhotel">Add Hotel</NavLink>
+                                <NavLink className="nav-link" to="/addhotel">Add Restaurant</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" to="/addservice">Add Service</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/"> Car Rental </NavLink>
+                                <NavLink className="nav-link" to="/addservice">Add Food Service</NavLink>
                             </li>
                         </ul>
                         {!localStorage.getItem('user') ?
