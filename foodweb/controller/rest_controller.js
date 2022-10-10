@@ -107,6 +107,22 @@ const updateToCart= async (req, res)=>{
     }
 }
 
+
+const removeToCart= async (req, res)=>{
+    try{
+        const cartStatus=false
+        console.log("req.body", req.body)
+        const updateData= await FoodService.findByIdAndUpdate({_id: req.params.id}, {
+            $set:{cartStatus}
+        })
+        console.log("updateData", updateData)
+        res.send({status: "update data successfully! ", "result": updateData})
+    }
+    catch(err){
+        console.log(err.message)
+    }
+}
+
 //search hotel
 const searcRest= async(req,res)=>{
     try{
@@ -135,5 +151,6 @@ module.exports= {
     restDetails,
     searcRest,
     cartList,
-    updateToCart
+    updateToCart,
+    removeToCart
 }

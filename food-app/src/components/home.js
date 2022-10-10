@@ -41,12 +41,10 @@ const HomeRestaurant = () => {
                                 <label /> Location:
                                 <input type="text" className="form-control" onChange={(e) => setDestination(e.target.value)} placeholder="Enter City...." />
                             </div>
-
                             <div className="col-3">
                                 <label /> Restaurant:
                                 <input type="text" className="form-control" onChange={(e) => setDestination(e.target.value)} placeholder="Search Restaurant...." />
                             </div>
-
                             <div className="col-2 pt-4">
                                 <button type="button" onClick={searchRestaurant}>Search</button>
                             </div>

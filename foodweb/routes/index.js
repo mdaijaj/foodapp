@@ -26,6 +26,8 @@ router.get('/restdetails/:id', rest.restDetails)
 
 router.get('/cartlist', rest.cartList)
 router.put('/updatetocart/:id', rest.updateToCart)
+router.put('/removetocart/:id', rest.removeToCart)
+
 // router.put('/updatehotel/:id',login_required, rest.updateHotel)
 // router.delete('/deletehotel/:id', login_required, rest.deleteHotel)
 

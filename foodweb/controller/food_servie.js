@@ -53,10 +53,10 @@ const allServices= async (req, res)=>{
 const serviceDetails= async (req, res)=>{
     try{
         console.log("iddd", req.params.id)
-        const serviceData= await FoodService.findById({
+        const serviceData= await FoodService.find({
             _id: req.params.id
         })
-        // .populate('restId')
+        .populate("restId")
         if (!serviceData || serviceData==undefined){ 
             return  res.send("not found userDtails")
         }
