@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -37,15 +36,16 @@ const Signup = () => {
             alert("invalid credential")
         }
     }
+
     return (
         <>
             <div className="container">
                 <div className="row">
                     <div className="col-2"></div>
                     <div className="col-6">
-                        
+
                         <div className="main" style={{ textAlign: "left", margin: "auto", padding: "30px 30px", border: "2px solid black", borderRadius: "5px" }}>
-                        <h2 style={{textAlign: "center"}}>Signup Page</h2>
+                            <h2 style={{ textAlign: "center" }}>Signup Page</h2>
                             <form onSubmit={handleSubmit}>
                                 <div className="mb-3">
                                     <label for="user-name" className="col-form-label" >Name:</label>

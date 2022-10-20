@@ -30,14 +30,15 @@ const Cart = () => {
             cartStatus: statue,
         });
         console.log("response3", response)
-        console.log("updateresponse", response.data.data)
-        // setFindRest(response.data.data)
+        // console.log("updateresponse", response.data)
+        setFindRest([response.data.result])
         return response
     }
 
     const gatewayPayment=()=>{
         alert("please select payment method!")
     }
+    const users= localStorage.setItem("itemscart", findRest.length)
 
     useEffect(() => {
         getAllRest()
@@ -49,7 +50,6 @@ const Cart = () => {
             <div className="container">
                 <ul className="row list-ul">
                     {loading ? "please wait data is loading" : ""}
-
                     {console.log("findRest", findRest)}
                     {
                         findRest?.map((rest => {
@@ -64,7 +64,7 @@ const Cart = () => {
                                                 <img src="https://i.pinimg.com/474x/d2/b0/10/d2b01052124d637b98d00d0e595b8965.jpg"
                                                     width="50" height="50"
                                                     onClick={() => itemDetails(rest._id)} />
-
+                                                    
                                                 <div className="card" style={{ width: "35rem", borderRadius: "20px" }}>
                                                     <img className="card-img-top" src="https://www.oberoihotels.com/-/media/oberoi-hotels/website-images/the-oberoi-mumbai/dining/detail/ziya---3.jpg?w=724&hash=dcf2c5714715cad3d4b3f30391636aa0" alt="Card image cap" />
                                                 </div>
@@ -86,7 +86,6 @@ const Cart = () => {
                                             </div>
                                         </div>
                                     </div>
-                                   
                                 </>
                             )
                         }))

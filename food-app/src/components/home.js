@@ -52,8 +52,6 @@ const HomeRestaurant = () => {
                     </div>
                 </form>
             </div>
-
-
             
             <center><h1>Recenctly Restaurant Search....</h1></center><br />
             <div className="container">
@@ -61,10 +59,7 @@ const HomeRestaurant = () => {
             {loading? "please wait data is loading": ""}
 
                 {console.log("findRest", findRest)}
-                {
-
-
-                    findRest?.map((rest => {
+                {findRest?.map((rest => {
                         {console.log("rest", rest)}
                         return (
                             <>

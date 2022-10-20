@@ -5,7 +5,8 @@ import cartLogo from '../images/carts.png'
 
 const Navbar = (props) => {
     const navigate = useNavigate()
-
+    const cardata= localStorage.getItem("itemscart")
+    console.log("cardata", cardata)
 
     const handleLogout = () => {
         localStorage.removeItem('user')
@@ -47,9 +48,9 @@ const Navbar = (props) => {
                             :
                             <>
                                 <button onClick={handleLogout} className='btn btn-dark'>Logout</button>
-                               
                                 <h4 style={{ padding: "20px" }}>{JSON.parse(localStorage.getItem('user')).user_detail.name}</h4>
                                 <Link className='' to="/cartlist"  role="button" >
+                                    <p style={{color: "black", margin: "-13px", fontSize: "bold"}}>{cardata}</p>
                                     <img src={cartLogo} width="50" height="40" className="d-inline-block align-top" alt="image path not found" />
                                 </Link>
                             </>

@@ -53,7 +53,7 @@ const allServices= async (req, res)=>{
 const serviceDetails= async (req, res)=>{
     try{
         console.log("iddd", req.params.id)
-        const serviceData= await FoodService.find({
+        const serviceData= await FoodService.findById({
             _id: req.params.id
         })
         .populate("restId")
