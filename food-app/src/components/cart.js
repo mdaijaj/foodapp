@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import '../App.css'
 import deleteIcons from '../images/delete-icon.png'
 
@@ -9,6 +9,7 @@ const Cart = () => {
     const [restList, setRestList] = useState([])
     const [findRest, setFindRest] = useState([])
     const [loading, setLoading] = useState(null)
+    const navigate = useNavigate();
 
     let totalAmount=0
     let deliverycharge= 50
@@ -36,7 +37,8 @@ const Cart = () => {
     }
 
     const gatewayPayment=()=>{
-        alert("please select payment method!")
+        // alert("please select payment method!")
+        navigate('/payment')
     }
     const users= localStorage.setItem("itemscart", findRest.length)
 
@@ -58,11 +60,11 @@ const Cart = () => {
                             return (
                                 <>
                                     {/* <div className="" style={{textDecoration: "none", border: "3px solid green"}}> */}
-                                    <div className="col-12 li-list">
+                                    <div className="col-8 li-list">
                                         <div className="row">
                                             <div className="col-6 d-flex justify-content-center">
                                                 <img src="https://i.pinimg.com/474x/d2/b0/10/d2b01052124d637b98d00d0e595b8965.jpg"
-                                                    width="50" height="50"
+                                                    width="40" height="30" 
                                                     onClick={() => itemDetails(rest._id)} />
                                                     
                                                 <div className="card" style={{ width: "35rem", borderRadius: "20px" }}>
@@ -100,7 +102,7 @@ const Cart = () => {
                     <h5>Tax:  {totalAmount * 18/100}</h5>
                     <h5>Delivery Charge:  {deliverycharge} </h5>
                     <h5>Total Amount: {totalAmount + deliverycharge + totalAmount * 18/100} </h5><br/>
-                    <button className="btn btn-success " onClick={gatewayPayment}>Order</button>
+                    <button className="btn btn-success" onClick={gatewayPayment}>Check</button>
                 </div>
             </div>
         </>

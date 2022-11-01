@@ -8,6 +8,7 @@ import Signup from './components/user/signup2';
 import Login from './components/user/login2';
 import Cart from './components/cart';
 import FoodItemDetails from './components/hotel/fooditemdetails';
+import Payment from './components/payment'
 // import ServiceAdd from './components/hotel/addservice'
 // import AddHotel from './components/hotel/addhotel'
 
@@ -21,6 +22,8 @@ const Routing=()=>{
         <Route path="/cartlist" element={<Cart/>} />
         <Route path="/restdetails/:id" element={<HotelDetails/>} />
         <Route path="/fooditemdetails/:id" element={<FoodItemDetails/>} />
+        <Route path="/payment" element={<Payment/>} />
+
       </Routes>
     </>
   )

@@ -13,7 +13,7 @@ const FoodItemDetails = () => {
   const {id} = useParams()
   console.log("foodid", id)
 
-  const [findhotel, setFindhotel] = useState()
+  const [findhotel, setFindhotel] = useState(null)
   const [loading, setLoading] = useState(null)
 
   const hotelDetails = async (id) => {
@@ -23,9 +23,13 @@ const FoodItemDetails = () => {
     return response
   }
 
+  const paymentDetails = async (id) => {
+    navigate('/payment')
+  }
+
   useEffect(()=>{
     hotelDetails(id)
-  }, [findhotel])
+  }, [])
 
   return (
     <>
@@ -46,7 +50,7 @@ const FoodItemDetails = () => {
               <p className="card-text">{`restName: ${findhotel.restId.restName}`}</p>
               <p className="card-text">{`state: ${findhotel.restId.state}`}</p>
               <p className="card-text">{`description: ${findhotel.restId.description}`}</p>
-              <button className="btn btn-success" onClick={"hotelDetails()"}>Reserve or Book Now!</button>
+              <button className="btn btn-success" onClick={"paymentDetails"}>Reserve or Book Now!</button>
             </div>
           </div>
         </div> : 

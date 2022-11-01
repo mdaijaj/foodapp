@@ -21,13 +21,13 @@ const HotelDetails = () => {
   const [destination, setDestination] = useState(null)
   const [loading, setLoading] = useState(null)
 
-  const hotelDetails = async () => {
+  const hotelDetail = async () => {
     const response = await axios.get(`/restdetails/${id}`);
     console.log("response2", response)
     setHotelList(...hotelList, response)
     setFindRest(response.data.data)
     setFindhotel(response.data.data)
-    return response
+    // return response
   }
 
   let allCarts = []
@@ -56,7 +56,7 @@ const foodItemDetails=(id)=>{
 }
 
   useEffect(() => {
-    hotelDetails()
+    hotelDetail()
   }, [])
 
   return (

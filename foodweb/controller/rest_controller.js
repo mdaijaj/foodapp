@@ -145,6 +145,71 @@ const searcRest= async(req,res)=>{
 }
 
 
+
+//search api
+const restaurantSearch = (req, res) =>{
+    // var zomatoJS = require('zomato.js')
+    // var z = new zomatoJS("b34b63d226456ec371990ba3bc8961a4")       //zomato api key
+    const client = zomato.createClient({userKey: '176bd0663551ddcc4cea2fcb9dc809bf'})
+
+    let options = {
+        provider : 'opencage',                                     //Geolocation provider(opencage/mapquest)
+        httpAdapter : 'https',
+        apiKey : "1010dc7d09ba48feb90da0770cbec556",               //Api Key provided by geolocation provider
+        formatter : null
+    }
+    var geocoder = nodeGeo(options)
+
+    const configKey = 'ssss';
+    var accessToken = "";
+    let name = req.body.city
+    console.log("client", client)
+
+    client.getLocations({query: name,}, (err, result) =>{
+        if(!err){
+            console.log("result:", result)
+            let main_data = JSON.parse(result).location_suggestions;
+            let latitude = JSON.stringify (main_data[0].latitude);
+            let longitude = JSON.stringify (main_data[0].longitude);
+            // console.log(lat);
+            // console.log(lon);
+            client.getGeocode({lat:latitude, lon:longitude},(err, result)=>{
+                console.log("result2", result)
+                if(!err){
+                    // console.log(JSON.parse(result));
+                    // res.send(result);
+                    let data = JSON.parse(result).nearby_restaurants; 
+                    // console.log("data", data)
+                    let data_list = [];
+                    for(var j of data){
+                        var Dict={
+                            name: j.restaurant.name,
+                            address: j.restaurant.location.address,
+                            average_cost_for_two: j.restaurant.average_cost_for_two,
+                            price_range: j.restaurant.price_range,
+                            has_online_delivery: j.restaurant.has_online_delivery,
+                            cuisines: j.restaurant.cuisines,
+                            featured_image: j.restaurant.featured_image,
+                            url: j.restaurant.url,
+                            photos_url: j.restaurant.photos_url
+                        }
+                        // console.log(Dict)
+                        data_list.push(Dict);
+                    }
+                    // console.log(data_list);
+                    return res.send(data_list)
+                }else{
+                    console.log(err);
+                }
+            })
+        }else{
+            console.log(err);
+        }
+    })
+}
+
+
+
 module.exports= {
     addRests,
     allRests,
@@ -152,5 +217,6 @@ module.exports= {
     searcRest,
     cartList,
     updateToCart,
-    removeToCart
+    removeToCart,
+    restaurantSearch
 }
