@@ -16,14 +16,13 @@ const Routing=()=>{
   return(
     <>
       <Routes>
+      <Route path="/" element={<HomeRestaurant/>} />  
         <Route path="/signup" element={<Signup/>} />
         <Route path="/login" element={<Login/>} />
-        <Route path="/" element={<HomeRestaurant/>} />  
         <Route path="/cartlist" element={<Cart/>} />
         <Route path="/restdetails/:id" element={<HotelDetails/>} />
         <Route path="/fooditemdetails/:id" element={<FoodItemDetails/>} />
         <Route path="/payment" element={<Payment/>} />
-
       </Routes>
     </>
   )
