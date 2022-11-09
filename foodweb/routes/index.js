@@ -212,7 +212,7 @@ router.post('/paynow', (req, res) => {
                 params['ORDER_ID'] = uuidv4(),
                 params['MARCHAND_KEY'] = process.env.MARCHAND_KEY,
                 params['TXN_AMOUNT'] = 500,
-                params['CALLBACK_URL'] = 'http://localhost:5000/api/callback',
+                params['CALLBACK_URL'] = 'http://apiresortweb.tk/api/callback',
                 params['EMAIL'] = "aijaj@gmail.com",
                 params['MOBILE_NO'] = '8826616653'
                 
